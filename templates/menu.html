@@ -1,0 +1,43 @@
+{# "templates/menu.html" #}
+
+{% extends "_base.html" %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>№</th>
+        <th>Тур</th>
+        <th>Ціна</th>
+    </tr>
+    {% for tuor in tuors %}
+        <tr>
+            <td>{{ tuor.id }}</td>
+            <td>{{ tuor.name }}</td>
+            <td>
+           
+            </td>
+        <td>
+        <a href="{{ url_for('tuors.del_tuor', id=tuor.id) }}" class="btn btn-danger">Видалити тур</a>
+    </td>
+    
+    {% endfor %}</tr>
+   
+</table>
+
+
+<form action="{{ url_for('tuors.add_tuor')}}" method="post">
+    <p>
+        <label>Тур</label>
+        <input type="text" name="name">
+    </p>
+    <p>
+        <label>Ціна</label>
+        <input type="number" name="price">
+    </p>
+    <p>
+     
+    <button type="submit">Додати тур</button>
+</form>
+
+{% endblock content %}
